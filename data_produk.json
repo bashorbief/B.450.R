@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nama_produk": "Produk Contoh 1",
+    "harga": "Rp 50.000",
+    "gambar": "images/produk1.jpg",
+    "deskripsi": "Deskripsi singkat produk anda di sini."
+  },
+  {
+    "id": 2,
+    "nama_produk": "Produk Contoh 2",
+    "harga": "Rp 75.000",
+    "gambar": "images/produk2.jpg",
+    "deskripsi": "Deskripsi produk kedua."
+  }
+]
