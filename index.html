@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etalase Produk Saya</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        .wadah-produk { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .kartu-produk { background: white; border-radius: 8px; width: 250px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .kartu-produk img { max-width: 100%; border-radius: 5px; height: 150px; object-fit: cover; }
+        .harga { color: #e91e63; font-weight: bold; font-size: 1.2em; margin: 10px 0; }
+        .deskripsi { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+
+    <h1>Katalog Produk B.450.R</h1>
+    <div id="produk-list" class="wadah-produk">
+        </div>
+
+    <script>
+        // Mengambil data dari file JSON yang kita buat tadi
+        fetch('data_produk.json')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('produk-list');
+                data.forEach(p => {
+                    const item = `
+                        <div class="kartu-produk">
+                            <img src="${p.gambar}" alt="${p.nama_produk}">
+                            <h3>${p.nama_produk}</h3>
+                            <p class="deskripsi">${p.deskripsi}</p>
+                            <p class="harga">${p.harga}</p>
+                        </div>
+                    `;
+                    list.innerHTML += item;
+                });
+            })
+            .catch(err => console.error("Gagal memuat data:", err));
+    </script>
+</body>
+</html>
