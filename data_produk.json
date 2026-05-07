@@ -1,9 +1,16 @@
 [
   {
     "id": 1,
-    "nama_produk": "Contoh Nama Barang",
+    "nama_produk": "Baut L Bak Magnet",
+    "harga": "Rp. 15.000",
+    "gambar": "images/baut.jpg",
+    "keterangan": "Supra X 125, Karisma, Kirana"
+  },
+  {
+    "id": 2,
+    "nama_produk": "Paking Head Standar",
     "harga": "Rp. 10.000",
-    "gambar": "images/produk_contoh.jpg",
-    "keterangan": "supra, suprax 125, grand, vario lama, shogun"
+    "gambar": "images/paking.jpg",
+    "keterangan": "Mio Lama, Mio Sporty, Soul"
   }
 ]
