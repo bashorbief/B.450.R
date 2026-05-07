@@ -3,150 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etalase Sperpart Motor B.450.R</title>
+    <title>Katalog Produk</title>
     <style>
-        /* Gaya Dasar Halaman */
         body { 
-            font-family: 'Courier New', Courier, monospace; /* Gaya huruf seperti mesin ketik, mirip sketsa */
-            background-color: #fcfcf4; /* Warna latar krem muda seperti sketsa */
+            font-family: sans-serif; 
+            background-color: #f0f5f9; 
             margin: 0; 
-            padding: 20px; 
-        }
-        h1 { 
-            text-align: center; 
-            color: #333; 
-            margin-bottom: 40px;
+            padding: 15px; 
         }
 
-        /* Wadah Utama untuk Semua Kartu Produk */
-        .wadah-etalase { 
-            display: flex; 
-            flex-direction: column; /* Kartu produk tersusun ke bawah */
-            gap: 30px; 
-            max-width: 800px; /* Batasi lebar agar rapi di desktop */
-            margin: 0 auto; /* Tengah-tengah */
-        }
-
-        /* Gaya Kartu Produk Tunggal */
-        .kartu-produk { 
-            background: white; 
-            border-radius: 12px; /* Sudut tumpul */
-            padding: 25px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Bayangan lembut */
-        }
-
-        /* Nama Barang di Atas */
-        .nama-barang { 
-            font-size: 24px; 
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            border-bottom: 1px solid #ddd; /* Garis bawah tipis */
-            padding-bottom: 10px;
-        }
-
-        /* Wadah Konten Tengah (Gambar + Keterangan) */
-        .konten-tengah {
-            display: grid;
-            grid-template-columns: 200px 1fr; /* Kolom 1 untuk gambar (200px), Kolom 2 untuk keterangan */
-            gap: 25px; /* Jarak antara gambar dan keterangan */
-            align-items: center; /* Rata tengah secara vertikal */
-        }
-
-        /* Wadah Kiri (Gambar + Harga di Bawahnya) */
-        .wadah-kiri {
-            text-align: center;
-        }
-
-        /* Gaya Gambar */
-        .gambar-produk { 
-            width: 100%; /* Isi penuh wadah-kiri */
-            max-width: 200px; /* Batasi lebar gambar */
-            height: 200px; /* Buat kotak */
-            border: 10px solid black; /* Bingkai hitam tebal seperti sketsa */
-            border-radius: 10px; /* Sudut bingkai tumpul */
-            object-fit: cover; /* Gambar tidak distorsi */
-            box-sizing: border-box; /* Bingkai masuk hitungan ukuran */
-            display: block;
+        /* Wadah Utama */
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        /* Gaya Harga (Di bawah Gambar) */
-        .harga { 
-            font-size: 22px; 
-            font-weight: bold; 
-            margin-top: 15px; /* Jarak dari gambar */
+        /* Kotak Produk (Card) - Mirip tampilan aplikasi kamu */
+        .card {
+            background: white;
+            border: 2px solid #e06c4d; /* Warna garis tepi oranye seperti di foto */
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Nama Barang di Atas Sendiri */
+        .nama-barang {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
             color: #333;
         }
 
-        /* Wadah Kanan (Keterangan/Kompatibilitas) */
-        .wadah-keterangan {
-            font-size: 16px; 
-            line-height: 1.6; /* Jarak baris agar mudah dibaca */
-            color: #555;
-            background-color: #fafafa; /* Latar sedikit berbeda */
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #eee;
+        /* Bagian Tengah (Gambar & Harga di kiri, Keterangan di kanan) */
+        .konten-bawah {
+            display: flex;
+            gap: 15px;
         }
 
-        /* Responsif untuk Layar HP Kecil */
-        @media (max-width: 600px) {
-            .konten-tengah {
-                grid-template-columns: 1fr; /* Jadi satu kolom (gambar di atas keterangan) */
-                text-align: center;
-            }
-            .wadah-keterangan {
-                text-align: center;
-            }
+        /* Sisi Kiri: Gambar dan Harga di bawahnya */
+        .sisi-kiri {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px; /* Lebar tetap untuk area gambar */
+        }
+
+        .gambar-produk {
+            width: 100px;
+            height: 100px;
+            border: 3px solid black; /* Bingkai hitam tebal */
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .harga-barang {
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5px;
+            color: #000;
+        }
+
+        /* Sisi Kanan: Keterangan Barang */
+        .sisi-kanan {
+            flex: 1; /* Mengambil sisa ruang */
+            font-size: 13px;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label-detail {
+            font-style: italic;
+            color: #888;
+            margin-bottom: 4px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Katalog Sperpart Motor</h1>
-
-    <div id="produk-list" class="wadah-etalase">
+    <div class="list-container" id="produk-list">
         </div>
 
     <script>
-        // Mengambil data dari file data_produk.json
         fetch('data_produk.json')
             .then(response => response.json())
             .then(data => {
                 const list = document.getElementById('produk-list');
-                list.innerHTML = ''; // Bersihkan kontainer
-
                 data.forEach(p => {
-                    // Membuat struktur HTML untuk setiap produk sesuai sketsa
-                    const itemHTML = `
-                        <div class="kartu-produk">
+                    const card = `
+                        <div class="card">
                             <div class="nama-barang">${p.nama_produk}</div>
-
-                            <div class="konten-tengah">
-                                
-                                <div class="wadah-kiri">
-                                    <img src="${p.gambar}" alt="${p.nama_produk}" class="gambar-produk">
-                                    <div class="harga">${p.harga}</div>
-                                
-                                    <a href="https://wa.me/628123456789?text=Saya%20tertarik%20dengan%20${encodeURIComponent(p.nama_produk)}" 
-                                       style="display: inline-block; background-color: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight:bold;">
-                                       Pesan via WA
-                                    </a>
+                            
+                            <div class="konten-bawah">
+                                <div class="sisi-kiri">
+                                    <img src="${p.gambar}" class="gambar-produk" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
+                                    <div class="harga-barang">${p.harga}</div>
                                 </div>
 
-                                <div class="wadah-keterangan">
-                                    <strong>Kompatibilitas / Dapat Digunakan Untuk:</strong><br><br>
-                                    ${p.keterangan}
+                                <div class="sisi-kanan">
+                                    <div class="label-detail">Detail / Cocok untuk :</div>
+                                    <div>${p.keterangan}</div>
                                 </div>
                             </div>
                         </div>
                     `;
-                    list.innerHTML += itemHTML;
+                    list.innerHTML += card;
                 });
-            })
-            .catch(err => {
-                console.error("Gagal memuat data:", err);
-                document.getElementById('produk-list').innerHTML = '<p style="text-align:center; color:red;">Gagal memuat katalog produk. Pastikan file data_produk.json benar.</p>';
             });
     </script>
 </body>
