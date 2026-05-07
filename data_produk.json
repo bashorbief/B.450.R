@@ -12,5 +12,12 @@
     "harga": "Rp. 10.000",
     "gambar": "images/paking.jpg",
     "keterangan": "Mio Lama, Mio Sporty, Soul"
+  },
+  {
+    "id": 3,
+    "nama_produk": "Kampas Rem Depan",
+    "harga": "Rp. 25.000",
+    "gambar": "images/kampas.jpg",
+    "keterangan": "Vario 125, Beat FI, Scoopy"
   }
 ]
