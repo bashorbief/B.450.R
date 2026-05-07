@@ -19,5 +19,89 @@
     "harga": "Rp. 25.000",
     "gambar": "images/dipad.jpeg",
     "keterangan": "Vario 125, Beat FI, Scoopy"
+  },
+  {
+    "id": 4,
+    "nama_produk": "Gir Depan 14T",
+    "harga": "Rp. 35.000",
+    "gambar": "images/gir_depan.jpg",
+    "keterangan": "Supra Fit, Revo Lama, Grand"
+  },
+  {
+    "id": 5,
+    "nama_produk": "Busi Racing Iridium",
+    "harga": "Rp. 95.000",
+    "gambar": "images/busi.jpg",
+    "keterangan": "NMAX, Aerox, Lexi, Vario 150"
+  },
+  {
+    "id": 6,
+    "nama_produk": "Seal Shock Depan",
+    "harga": "Rp. 20.000",
+    "gambar": "images/seal_shock.jpg",
+    "keterangan": "RX King, GL Pro, Tiger"
+  },
+  {
+    "id": 7,
+    "nama_produk": "Filter Udara",
+    "harga": "Rp. 45.000",
+    "gambar": "images/filter.jpg",
+    "keterangan": "Beat ESP, Vario 110 LED"
+  },
+  {
+    "id": 8,
+    "nama_produk": "Kabel Gas",
+    "harga": "Rp. 30.000",
+    "gambar": "images/kabel_gas.jpg",
+    "keterangan": "F1ZR, Vega R Lama, Jupiter Z"
+  },
+  {
+    "id": 9,
+    "nama_produk": "Lampu Depan LED",
+    "harga": "Rp. 65.000",
+    "gambar": "images/lampu.jpg",
+    "keterangan": "Semua motor bebek & matic (H6)"
+  },
+  {
+    "id": 10,
+    "nama_produk": "Roller Racing 11gr",
+    "harga": "Rp. 55.000",
+    "gambar": "images/roller.jpg",
+    "keterangan": "Mio J, Soul GT, Fino FI"
+  },
+  {
+    "id": 11,
+    "nama_produk": "Rantai Roda 428-110",
+    "harga": "Rp. 85.000",
+    "gambar": "images/rantai.jpg",
+    "keterangan": "Satria FU, Smash, Shogun 125"
+  },
+  {
+    "id": 12,
+    "nama_produk": "Aki Kering GTZ5S",
+    "harga": "Rp. 185.000",
+    "gambar": "images/aki.jpg",
+    "keterangan": "Beat, Vario, Mio M3, Supra X 125"
+  },
+  {
+    "id": 13,
+    "nama_produk": "Piringan Cakram Depan",
+    "harga": "Rp. 120.000",
+    "gambar": "images/cakram.jpg",
+    "keterangan": "Jupiter MX, Vega ZR, Force"
+  },
+  {
+    "id": 14,
+    "nama_produk": "V-Belt Kit",
+    "harga": "Rp. 145.000",
+    "gambar": "images/vbelt.jpg",
+    "keterangan": "Vario 125 LED, Vario 150"
+  },
+  {
+    "id": 15,
+    "nama_produk": "Spion Tomok Variasi",
+    "harga": "Rp. 75.000",
+    "gambar": "images/spion.jpg",
+    "keterangan": "Universal (Semua jenis motor)"
   }
 ]
