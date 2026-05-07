@@ -9,10 +9,10 @@
             font-family: sans-serif; 
             background-color: #f0f5f9; 
             margin: 0; 
-            padding: 15px; 
+            padding: 15px;
+            padding-bottom: 100px; /* Jarak agar konten tidak tertutup menu pencarian */
         }
 
-        /* Wadah Utama */
         .list-container {
             display: flex;
             flex-direction: column;
@@ -21,17 +21,15 @@
             margin: 0 auto;
         }
 
-        /* Kotak Produk (Card) - Mirip tampilan aplikasi kamu */
         .card {
             background: white;
-            border: 2px solid #e06c4d; /* Warna garis tepi oranye seperti di foto */
+            border: 2px solid #e06c4d; 
             border-radius: 12px;
             padding: 12px;
             display: flex;
             flex-direction: column;
         }
 
-        /* Nama Barang di Atas Sendiri */
         .nama-barang {
             font-weight: bold;
             font-size: 16px;
@@ -39,24 +37,22 @@
             color: #333;
         }
 
-        /* Bagian Tengah (Gambar & Harga di kiri, Keterangan di kanan) */
         .konten-bawah {
             display: flex;
             gap: 15px;
         }
 
-        /* Sisi Kiri: Gambar dan Harga di bawahnya */
         .sisi-kiri {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 120px; /* Lebar tetap untuk area gambar */
+            width: 120px;
         }
 
         .gambar-produk {
             width: 100px;
             height: 100px;
-            border: 3px solid black; /* Bingkai hitam tebal */
+            border: 3px solid black; 
             border-radius: 8px;
             object-fit: cover;
             background-color: #eee;
@@ -66,22 +62,45 @@
             font-weight: bold;
             font-size: 14px;
             margin-top: 5px;
-            color: #000;
         }
 
-        /* Sisi Kanan: Keterangan Barang */
         .sisi-kanan {
-            flex: 1; /* Mengambil sisa ruang */
+            flex: 1;
             font-size: 13px;
             color: #555;
-            display: flex;
-            flex-direction: column;
         }
 
-        .label-detail {
-            font-style: italic;
-            color: #888;
-            margin-bottom: 4px;
+        /* --- MENU PENCARIAN MELAYANG (FLOATING) --- */
+        .search-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #ddd;
+            z-index: 1000;
+        }
+
+        .search-container input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .search-icon {
+            color: #e06c4d;
+            font-size: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -90,32 +109,61 @@
     <div class="list-container" id="produk-list">
         </div>
 
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="inputCari" placeholder="Cari Nama Barang..." onkeyup="filterProduk()">
+    </div>
+
     <script>
+        let semuaProduk = [];
+
+        // Ambil data dari JSON
         fetch('data_produk.json')
             .then(response => response.json())
             .then(data => {
-                const list = document.getElementById('produk-list');
-                data.forEach(p => {
-                    const card = `
-                        <div class="card">
-                            <div class="nama-barang">${p.nama_produk}</div>
-                            
-                            <div class="konten-bawah">
-                                <div class="sisi-kiri">
-                                    <img src="${p.gambar}" class="gambar-produk" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
-                                    <div class="harga-barang">${p.harga}</div>
-                                </div>
+                semuaProduk = data;
+                tampilkanData(semuaProduk);
+            });
 
-                                <div class="sisi-kanan">
-                                    <div class="label-detail">Detail / Cocok untuk :</div>
-                                    <div>${p.keterangan}</div>
-                                </div>
+        // Fungsi untuk menampilkan data ke layar
+        function tampilkanData(data) {
+            const list = document.getElementById('produk-list');
+            list.innerHTML = ''; 
+
+            if (data.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:grey;">Barang tidak ditemukan...</p>';
+                return;
+            }
+
+            data.forEach(p => {
+                const card = `
+                    <div class="card">
+                        <div class="nama-barang">${p.nama_produk}</div>
+                        <div class="konten-bawah">
+                            <div class="sisi-kiri">
+                                <img src="${p.gambar}" class="gambar-produk" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
+                                <div class="harga-barang">${p.harga}</div>
+                            </div>
+                            <div class="sisi-kanan">
+                                <div style="font-style:italic; color:#888;">Detail / Cocok untuk :</div>
+                                <div>${p.keterangan}</div>
                             </div>
                         </div>
-                    `;
-                    list.innerHTML += card;
-                });
+                    </div>
+                `;
+                list.innerHTML += card;
             });
+        }
+
+        // Fungsi Filter Pencarian
+        function filterProduk() {
+            const keyword = document.getElementById('inputCari').value.toLowerCase();
+            const hasilFilter = semuaProduk.filter(p => 
+                p.nama_produk.toLowerCase().includes(keyword) || 
+                p.keterangan.toLowerCase().includes(keyword)
+            );
+            tampilkanData(hasilFilter);
+        }
     </script>
 </body>
 </html>
